@@ -8,13 +8,11 @@ wire [31:0]insRegwire;
 reg [31:0] insMem [31:0];
 reg [4:0] PC;
 
-
-
-
 //PC count and register
 wire jump; //jump=1 means override the PC
 wire [4:0] newPC;
 assign newPC = jump? (jump):(PC+1);
+
 always @(posedge clk) begin
     PC<=newPC;
     insReg<=insRegwire;
