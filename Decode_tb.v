@@ -1,7 +1,7 @@
 module Decode_tb( );
     reg clk;
     reg [31:0] instruction;
-    wire [5:0] opcode;
+    wire [6:0] opcode;
     wire [4:0] dst;
     wire [9:0] offsetlo;
     

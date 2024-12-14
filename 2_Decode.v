@@ -3,7 +3,7 @@ module Decode(clk,instruction,opcode,dst,src1,src2,offsetlo);
     input wire clk;
     input wire [31:0] instruction;
     
-    output reg [5:0] opcode;
+    output reg [6:0] opcode;
     output reg [4:0] dst;
     
     output reg [31:0]src1;

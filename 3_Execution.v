@@ -1,12 +1,12 @@
-module Execution(clk,opcode,dst,src1,src2,
-offsetlo,result);
+module Execution(clk,opcode,dstin,src1,src2,offsetlo,result,dstout);
     input wire clk;
-    input wire [5:0] opcode;
-    input wire [4:0] dst;
+    input wire [6:0] opcode;
+    input wire [4:0] dstin;
     input wire [31:0] src1;
     input wire [31:0] src2;
     input wire [9:0] offsetlo;
     output reg [31:0] result;
+    output reg [4:0] dstout;
     
     reg [31:0]reg0;
     reg [31:0]reg1;
@@ -35,6 +35,7 @@ offsetlo,result);
                     count=count+1;
                 end
             end
+            6'h3F: ;
         default: result<=32'hFFFFFFFF;   
         endcase
     end
