@@ -10,7 +10,9 @@ module Decode(
     output reg [4:0] src1_reg,
     output reg [4:0] src2_reg,    
     output reg [31:0]src2,
-    output reg [9:0]offsetlo
+    output reg [9:0]offsetlo,
+    
+    input wire enable
     );
        
     //instruction [31:25] opcode
@@ -57,13 +59,15 @@ module Decode(
     
 
 always @(posedge clk) begin
-    opcode <= instruction[31:25];
-    dst <= instruction [24:20];
-    offsetlo <= instruction [9:0];
-    src1_reg <=instruction[19:15];
-    src2_reg <=instruction[19:15];
-    src1 <= regData[instruction[19:15]];
-    src2 <= regData[instruction[14:10]];
+    if (enable==1'b1) begin
+        opcode <= instruction[31:25];
+        dst <= instruction [24:20];
+        offsetlo <= instruction [9:0];
+        src1_reg <=instruction[19:15];
+        src2_reg <=instruction[19:15];
+        src1 <= regData[instruction[19:15]];
+        src2 <= regData[instruction[14:10]];
+    end
     
 end
 

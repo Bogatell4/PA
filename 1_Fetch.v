@@ -3,7 +3,10 @@ module Fetch(
 input wire [4:0]jumpPC,
 input wire clk,
 output reg [31:0] insReg, //final reg of the fetch stage
-input wire jump //jump=1 means override the PC
+input wire jump, //jump=1 means override the PC
+input wire trapPC,
+input wire enable
+
 );
 
 wire [31:0]insRegwire;
@@ -41,11 +44,13 @@ end
 //PC count and register
 
 wire [4:0]newPC;
-assign newPC = jump? (jumpPC):(PC+1);
+assign newPC = jump ? (jumpPC): trapPC ? newPC :(PC+1);
 
 always @(posedge clk) begin
-    PC<=newPC;
-    insReg<=insRegwire;
+    if (enable==1'b1) begin
+        PC<=newPC;
+        insReg<=insRegwire;
+    end
 end 
 
 assign insRegwire = insMem [PC]; //instruction mem Mux controled by PC
