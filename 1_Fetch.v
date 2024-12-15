@@ -1,8 +1,11 @@
-module Fetch(clk,insReg,jump,jumpPC);
+module Fetch(
 
-input wire [4:0]jumpPC;
-input wire clk;
-output reg [31:0] insReg; //final reg of the fetch stage
+input wire [4:0]jumpPC,
+input wire clk,
+output reg [31:0] insReg, //final reg of the fetch stage
+input wire jump //jump=1 means override the PC
+);
+
 wire [31:0]insRegwire;
 
 reg [31:0] insMem [31:0];
@@ -36,7 +39,7 @@ initial begin //initial block, only for simulation
 end
 
 //PC count and register
-input wire jump; //jump=1 means override the PC
+
 wire [4:0]newPC;
 assign newPC = jump? (jumpPC):(PC+1);
 
