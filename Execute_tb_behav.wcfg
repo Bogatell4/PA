@@ -1,0 +1,96 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<wave_config>
+   <wave_state>
+   </wave_state>
+   <db_ref_list>
+      <db_ref path="Execute_tb_behav.wdb" id="1">
+         <top_modules>
+            <top_module name="Execute_tb" />
+            <top_module name="glbl" />
+         </top_modules>
+      </db_ref>
+   </db_ref_list>
+   <zoom_setting>
+      <ZoomStartTime time="27.880 ns"></ZoomStartTime>
+      <ZoomEndTime time="91.281 ns"></ZoomEndTime>
+      <Cursor1Time time="35.000 ns"></Cursor1Time>
+   </zoom_setting>
+   <column_width_setting>
+      <NameColumnWidth column_width="115"></NameColumnWidth>
+      <ValueColumnWidth column_width="59"></ValueColumnWidth>
+   </column_width_setting>
+   <WVObjectSize size="16" />
+   <wvobject fp_name="/Execute_tb/Execution_1/clk" type="logic">
+      <obj_property name="ElementShortName">clk</obj_property>
+      <obj_property name="ObjectShortName">clk</obj_property>
+   </wvobject>
+   <wvobject fp_name="/Execute_tb/Execution_1/opcode" type="array">
+      <obj_property name="ElementShortName">opcode[6:0]</obj_property>
+      <obj_property name="ObjectShortName">opcode[6:0]</obj_property>
+   </wvobject>
+   <wvobject fp_name="/Execute_tb/Execution_1/dstin" type="array">
+      <obj_property name="ElementShortName">dstin[4:0]</obj_property>
+      <obj_property name="ObjectShortName">dstin[4:0]</obj_property>
+   </wvobject>
+   <wvobject fp_name="/Execute_tb/Execution_1/src1" type="array">
+      <obj_property name="ElementShortName">src1[31:0]</obj_property>
+      <obj_property name="ObjectShortName">src1[31:0]</obj_property>
+      <obj_property name="Radix">SIGNEDDECRADIX</obj_property>
+   </wvobject>
+   <wvobject fp_name="/Execute_tb/Execution_1/src2" type="array">
+      <obj_property name="ElementShortName">src2[31:0]</obj_property>
+      <obj_property name="ObjectShortName">src2[31:0]</obj_property>
+      <obj_property name="Radix">SIGNEDDECRADIX</obj_property>
+   </wvobject>
+   <wvobject fp_name="/Execute_tb/Execution_1/result" type="array">
+      <obj_property name="ElementShortName">result[31:0]</obj_property>
+      <obj_property name="ObjectShortName">result[31:0]</obj_property>
+      <obj_property name="Radix">SIGNEDDECRADIX</obj_property>
+   </wvobject>
+   <wvobject fp_name="/Execute_tb/Execution_1/enable" type="logic">
+      <obj_property name="ElementShortName">enable</obj_property>
+      <obj_property name="ObjectShortName">enable</obj_property>
+   </wvobject>
+   <wvobject fp_name="/Execute_tb/Execution_1/src1w" type="array">
+      <obj_property name="ElementShortName">src1w[31:0]</obj_property>
+      <obj_property name="ObjectShortName">src1w[31:0]</obj_property>
+      <obj_property name="Radix">UNSIGNEDDECRADIX</obj_property>
+   </wvobject>
+   <wvobject fp_name="/Execute_tb/Execution_1/src2w" type="array">
+      <obj_property name="ElementShortName">src2w[31:0]</obj_property>
+      <obj_property name="ObjectShortName">src2w[31:0]</obj_property>
+      <obj_property name="Radix">UNSIGNEDDECRADIX</obj_property>
+   </wvobject>
+   <wvobject fp_name="/Execute_tb/Execution_1/doneMult" type="logic">
+      <obj_property name="ElementShortName">doneMult</obj_property>
+      <obj_property name="ObjectShortName">doneMult</obj_property>
+   </wvobject>
+   <wvobject fp_name="/Execute_tb/Execution_1/multing" type="logic">
+      <obj_property name="ElementShortName">multing</obj_property>
+      <obj_property name="ObjectShortName">multing</obj_property>
+   </wvobject>
+   <wvobject fp_name="/Execute_tb/Execution_1/reg0" type="array">
+      <obj_property name="ElementShortName">reg0[31:0]</obj_property>
+      <obj_property name="ObjectShortName">reg0[31:0]</obj_property>
+      <obj_property name="Radix">UNSIGNEDDECRADIX</obj_property>
+   </wvobject>
+   <wvobject fp_name="/Execute_tb/Execution_1/reg1" type="array">
+      <obj_property name="ElementShortName">reg1[31:0]</obj_property>
+      <obj_property name="ObjectShortName">reg1[31:0]</obj_property>
+      <obj_property name="Radix">SIGNEDDECRADIX</obj_property>
+   </wvobject>
+   <wvobject fp_name="/Execute_tb/Execution_1/reg2" type="array">
+      <obj_property name="ElementShortName">reg2[31:0]</obj_property>
+      <obj_property name="ObjectShortName">reg2[31:0]</obj_property>
+      <obj_property name="Radix">SIGNEDDECRADIX</obj_property>
+   </wvobject>
+   <wvobject fp_name="/Execute_tb/Execution_1/reg3" type="array">
+      <obj_property name="ElementShortName">reg3[31:0]</obj_property>
+      <obj_property name="ObjectShortName">reg3[31:0]</obj_property>
+      <obj_property name="Radix">SIGNEDDECRADIX</obj_property>
+   </wvobject>
+   <wvobject fp_name="/Execute_tb/Execution_1/count" type="array">
+      <obj_property name="ElementShortName">count[2:0]</obj_property>
+      <obj_property name="ObjectShortName">count[2:0]</obj_property>
+   </wvobject>
+</wave_config>
