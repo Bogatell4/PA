@@ -13,7 +13,7 @@ module Execution(
     output reg [31:0] result,
     output reg [4:0] dstout,
     
-    input wire [31:0] bp_data,
+    input wire [31:0] bp_data, //Bypass inputs
     input wire [31:0] bp_data_mem,
     input wire [4:0] bp_reg,
     input wire [4:0] bp_reg_mem,

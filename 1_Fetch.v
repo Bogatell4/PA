@@ -7,13 +7,13 @@ input wire jump, //jump=1 means override the PC
 input wire trapPC,
 input wire enable,
 
-//Cache inputs from mem
+//Cache inputs
 input wire WiCache,
 input wire [127:0]WiCacheline,
 input wire [8:0]WiCachetag,
 
-output wire CacheMiss,
-output wire [5:0]CacheMiss_tag
+output wire ICacheMiss,
+output wire [4:0]ICacheMiss_tag
 
 );
 

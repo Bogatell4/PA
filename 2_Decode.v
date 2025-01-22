@@ -12,6 +12,10 @@ module Decode(
     output reg [31:0]src2,
     output reg [9:0]offsetlo,
     
+    input wire WriteReg,
+    input wire [4:0] WriteRegdst,
+    input wire [31:0] WriteRegData,
+    
     input wire enable
     );
        
@@ -20,6 +24,13 @@ module Decode(
     // [19:15] src1 [14:10]src2
 
     reg [31:0] regData [31:0];
+    
+    //Update register data from WriteBack
+    always @(posedge clk)begin
+        if (WriteReg==1'b1)begin
+            regData[WriteRegdst]<=WriteRegData;
+        end
+    end
     
     //initial block only used during simulations
     initial begin
