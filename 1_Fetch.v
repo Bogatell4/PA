@@ -88,7 +88,7 @@ assign InstrOut = (PC[4:2]==iCtag[0][4:2] && iCtag[0][0]==1'b1) ? CacheOut[0]:
                   (PC[4:2]==iCtag[3][4:2] && iCtag[3][0]==1'b1) ? CacheOut[3]:
                   32'hFFFFFFFF;
 //determine Cache miss
-assign CacheMiss = (PC[4:2]==iCtag[0][4:2] && iCtag[0][0]==1'b1) ? 1'b0:
+assign ICacheMiss = (PC[4:2]==iCtag[0][4:2] && iCtag[0][0]==1'b1) ? 1'b0:
                    (PC[4:2]==iCtag[1][4:2] && iCtag[1][0]==1'b1) ? 1'b0:
                    (PC[4:2]==iCtag[2][4:2] && iCtag[2][0]==1'b1) ? 1'b0:
                    (PC[4:2]==iCtag[3][4:2] && iCtag[3][0]==1'b1) ? 1'b0:

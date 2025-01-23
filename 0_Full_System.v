@@ -1,10 +1,10 @@
 module fullsystem();
 
 reg clk;
-wire jumpPC,jump,trapPC,enable,ICacheMiss,WiCache;
+wire jump,trapPC,enable,ICacheMiss,WiCache;
 wire [127:0]WiCacheline;
 wire [8:0] WiCachetag;
-wire [4:0]ICacheMiss_tag;
+wire [4:0]ICacheMiss_tag,jumpPC;
 wire [31:0] insReg;
 //---------------------------------For decode down here
 wire WriteReg;
