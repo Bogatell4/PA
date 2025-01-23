@@ -75,7 +75,7 @@ always @(posedge clk) begin
         dst <= instruction [24:20];
         offsetlo <= instruction [9:0];
         src1_reg <=instruction[19:15];
-        src2_reg <=instruction[19:15];
+        src2_reg <=instruction[14:10];
         src1 <= regData[instruction[19:15]];
         src2 <= regData[instruction[14:10]];
     end
