@@ -53,7 +53,7 @@ module Execution(
         result=32'd0;
 
     end
-    
+    //TO DO: add shift register operations
     //TO DO: add new custom opcode for the kyber block
     always @(posedge clk)begin
         if(enable==1'b1) begin
