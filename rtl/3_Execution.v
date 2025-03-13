@@ -11,6 +11,9 @@ module Execution(
     output reg [31:0] result,
     output reg [4:0] dstout,
     
+    output reg [6:0] memOp,
+    output wire [19:0]MemAddr, //variable that points to the memory address which has 2^20 instances of 32bits each
+    
     /*input wire [31:0] bp_data,    //bypass inputs
     input wire [31:0] bp_data_mem,
     input wire [4:0] bp_reg,
@@ -37,7 +40,7 @@ module Execution(
     reg doneMult; //signal for multiplication finish
     reg multing;
     //if doneMult Nop=0, if opcode=mult Nop=1, else Nop=Nopreg
-    assign Nop21 = (doneMult==1'b1) ? 1'b0 : (opcode == 6'h02) ? 1'b1: Nop21_reg;
+    assign Nop21 = (doneMult==1'b1) ? 1'b0 : (opcode == 7'h02) ? 1'b1: Nop21_reg;
     
     reg [31:0]reg0;
     reg [31:0]reg1;
@@ -51,17 +54,23 @@ module Execution(
         count=3'd0;
         Nop21_reg=1'b0;
         result=32'd0;
-
     end
-    //TO DO: add shift register operations
+    
+
+   // wire [14:0]BEQoffset;
+   // wire [19:0]JUMPoffset;
+    assign MemAddr = {dstin,src2,offsetlo};    
+   // assign BEQoffset = {dstin,offsetlo};
+   // assign JUMPoffset = {dstin,src2,offsetlo};
+    
     //TO DO: add new custom opcode for the kyber block
     always @(posedge clk)begin
         if(enable==1'b1) begin
             case(opcode)
-                6'h00: result=src1+src2;
-                6'h01: result=src1-src2;
+                7'h00: result=src1+src2;
+                7'h01: result=src1-src2;
                 //need to implement pipeline stop for mult
-                6'h02: begin //mult in 5 clk cycles, specification by the teacher
+                7'h02: begin //mult in 5 clk cycles, specification by the teacher
                     if (multing==1'b0) begin
                         reg0<=src1*src2;
                         multing<=1'b1;
@@ -80,7 +89,27 @@ module Execution(
                         result<=reg3;
                     end
                 end
-                6'h3F: ;
+                
+                
+                // TO DO: figure out mem addresses and offsets for regs
+                
+                7'h10: begin //LDB base register + offset
+                    result<=src1;
+                    memOp<=7'h10;
+                end
+                7'h11: begin //LDW base register + offset
+                    result<=src1;
+                    memOp<=7'h11;
+                end
+                7'h12: begin //STB base register + offset
+                    result<=src1;
+                    memOp<=7'h12;
+                end
+                7'h13: begin //STW base register + offset
+                    result<=src1;
+                    memOp<=7'h13;
+                end
+                7'h3F: ;
                 default: result<=32'hFFFFFFFF;
             endcase
         end         
