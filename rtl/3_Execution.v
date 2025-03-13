@@ -4,17 +4,17 @@ module Execution(
     input wire [6:0] opcode,
     input wire [4:0] dstin,
     input wire [31:0] src1,
-    input wire [4:0] src1_reg,
-    input wire [4:0] src2_reg,
+    //input wire [4:0] src1_reg,
+    //input wire [4:0] src2_reg,
     input wire [31:0] src2,
     input wire [9:0] offsetlo,
     output reg [31:0] result,
     output reg [4:0] dstout,
     
-    input wire [31:0] bp_data,
+    /*input wire [31:0] bp_data,
     input wire [31:0] bp_data_mem,
     input wire [4:0] bp_reg,
-    input wire [4:0] bp_reg_mem,
+    input wire [4:0] bp_reg_mem,*/
     
     input wire enable, //
     output wire Nop21    //this reg will go to other enable signals of the pipeline to efectuate the Nop
@@ -22,16 +22,16 @@ module Execution(
 
     );
     //bypass muxes
-    wire [31:0] src1w;
-    wire [31:0] src2w;
+    //wire [31:0] src1w;
+    //wire [31:0] src2w;
     //order of the ternary operator puts higher priority to exec bypass (newer compared to mem)
-    assign src1w = (src1_reg == bp_reg) ? bp_data:
+    /*assign src1w = (src1_reg == bp_reg) ? bp_data:
                    (src1_reg == bp_reg_mem) ? bp_data_mem:
                    src1;
                    
     assign src2w = (src2_reg == bp_reg) ? bp_data:
                    (src2_reg == bp_reg_mem) ? bp_data_mem:
-                   src2;
+                   src2;*/
     
     reg Nop21_reg;
     reg doneMult; //signal for multiplication finish
@@ -54,15 +54,16 @@ module Execution(
 
     end
     
+    //TO DO: add new custom opcode for the kyber block
     always @(posedge clk)begin
         if(enable==1'b1) begin
             case(opcode)
-                6'h00: result=src1w+src2w;
-                6'h01: result=src1w-src2w;
+                6'h00: result=src1+src2;
+                6'h01: result=src1-src2;
                 //need to implement pipeline stop for mult
-                6'h02: begin //mult in 5 clk cycles
+                6'h02: begin //mult in 5 clk cycles, specification by the teacher
                     if (multing==1'b0) begin
-                        reg0<=src1w*src2w;
+                        reg0<=src1*src2;
                         multing<=1'b1;
                         Nop21_reg<=1'b1;
                         count<=3'd0;

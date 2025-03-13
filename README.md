@@ -4,6 +4,7 @@ Try to implement each feature on a separate branch :)
 
 
 It is a 5 stage pipeline:
+
 1.-FETCH
 Tasked with the PC counter and retrieving the instructions from the i-registers
 
@@ -18,6 +19,7 @@ stores the result in rd or performs a load/store operation
 
 5.-WRITEBACK
 Tasked with writing if needed data back to the data registers of stage 2
+
 
 OPTIONAL CORE FEATURES:
 Will be stored on a separate branch, not needed for the PD_lab
