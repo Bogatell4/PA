@@ -1,8 +1,8 @@
 module Adder_tb( );
     
     reg clk;
-    reg [4:0] result ;
-    wire [4:0] resultw;
+    reg [7:0] result ;
+    wire [7:0] resultw;
     reg [3:0] A ;
     reg [3:0] B ;
     

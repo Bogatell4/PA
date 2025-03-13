@@ -11,7 +11,7 @@ module Execution(
     output reg [31:0] result,
     output reg [4:0] dstout,
     
-    /*input wire [31:0] bp_data,
+    /*input wire [31:0] bp_data,    //bypass inputs
     input wire [31:0] bp_data_mem,
     input wire [4:0] bp_reg,
     input wire [4:0] bp_reg_mem,*/
@@ -21,7 +21,7 @@ module Execution(
                         //goes down the pipeline, doesnt affect itself, could be computed with multing to effect itself and be more efficient
 
     );
-    //bypass muxes
+    //bypass muxes and logic
     //wire [31:0] src1w;
     //wire [31:0] src2w;
     //order of the ternary operator puts higher priority to exec bypass (newer compared to mem)
