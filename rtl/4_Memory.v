@@ -2,7 +2,7 @@
 module Memory(
     input wire enable,
     input wire clk,
-    input wire [9:0 ]MemAddr,
+    input wire [9:0] MemAddr,
     input wire [4:0] dst,
     input wire [31:0] data_in,
     input wire [6:0] memOP,
