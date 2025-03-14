@@ -12,7 +12,7 @@ module Execution(
     output reg [4:0] dstout,
     
     output reg [6:0] memOp,
-    output wire [19:0]MemAddr, //variable that points to the memory address which has 2^20 instances of 32bits each
+    output reg [9:0]MemAddr, //variable that points to the memory address which has 2^20 instances of 32bits each
     
     /*input wire [31:0] bp_data,    //bypass inputs
     input wire [31:0] bp_data_mem,
@@ -58,8 +58,7 @@ module Execution(
     
 
    // wire [14:0]BEQoffset;
-   // wire [19:0]JUMPoffset;
-    assign MemAddr = {dstin,src2,offsetlo};    
+   // wire [19:0]JUMPoffset;   
    // assign BEQoffset = {dstin,offsetlo};
    // assign JUMPoffset = {dstin,src2,offsetlo};
     
@@ -91,22 +90,24 @@ module Execution(
                 end
                 
                 
-                // TO DO: figure out mem addresses and offsets for regs
-                
                 7'h10: begin //LDB base register + offset
                     result<=src1;
+                    MemAddr<=offsetlo+dstin;
                     memOp<=7'h10;
                 end
                 7'h11: begin //LDW base register + offset
                     result<=src1;
+                    MemAddr<=offsetlo+dstin;
                     memOp<=7'h11;
                 end
                 7'h12: begin //STB base register + offset
                     result<=src1;
+                    MemAddr<=offsetlo+dstin;
                     memOp<=7'h12;
                 end
                 7'h13: begin //STW base register + offset
                     result<=src1;
+                    MemAddr<=offsetlo+dstin;
                     memOp<=7'h13;
                 end
                 7'h3F: ;

@@ -1,8 +1,10 @@
 
 module Decode(
     input wire clk,
+    input wire WB,
+    input wire [4:0] WB_add,
+    input wire [31:0] datain,
     input wire [31:0] instruction,
-    
     output reg [6:0] opcode,
     output reg [4:0] dst,
   
@@ -20,6 +22,13 @@ module Decode(
     // [19:15] src1 [14:10]src2
 
     reg [31:0] regData [31:0];
+    
+    //Writebak process
+    always @(posedge clk) begin
+        if (enable==1'b1  &&  WB==1'b1) begin
+            regData [WB_add] <= datain;
+        end
+    end
     
     //initial block only used during simulations
     initial begin
@@ -68,7 +77,6 @@ always @(posedge clk) begin
         src1 <= regData[instruction[19:15]];
         src2 <= regData[instruction[14:10]];
     end
-    
 end
 
 endmodule
